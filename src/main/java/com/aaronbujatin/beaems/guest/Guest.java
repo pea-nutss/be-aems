@@ -19,5 +19,8 @@ public class Guest {
     private String relatedness;
     private String eventNameReference;
     private String status;
+    private int tableNumber;
+    private byte[] qrCodeImage;
+    private int qrCodeValue;
 
 }

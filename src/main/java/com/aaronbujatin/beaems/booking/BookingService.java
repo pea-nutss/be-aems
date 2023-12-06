@@ -27,6 +27,13 @@ public class BookingService {
     private final RegistrationFeeRepository registrationPaymentRepository;
 
     public Booking save(Booking booking) throws MessagingException {
+
+        boolean isBookingEventNameAlreadyExistSabiNiJephineson = bookingRepository.existsByEventName(booking.getEventName());
+
+        if(isBookingEventNameAlreadyExistSabiNiJephineson){
+            throw new IllegalStateException("Event name already exist");
+        }
+
         booking.setBookingDate(LocalDate.now());
         booking.setBookingStatus("PENDING");
         booking.setOrganizerName("PENDING");
