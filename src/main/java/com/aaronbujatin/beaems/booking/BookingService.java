@@ -39,13 +39,12 @@ public class BookingService {
         registrationPayment.setFullName(booking.getRegistrationFee().getFullName());
         registrationPayment.setExpirationDate(booking.getRegistrationFee().getExpirationDate());
         registrationPayment.setCvv(booking.getRegistrationFee().getCvv());
-        registrationPayment.setAmountFee(booking.getRegistrationFee().getAmountFee());
         registrationPaymentRepository.save(registrationPayment);
 
         Payment payment = new Payment();
         payment.setDate(LocalDate.now());
         payment.setEventName(booking.getEventName());
-        payment.setAmount(booking.getRegistrationFee().getAmountFee());
+        payment.setAmount(booking.getAmountPaid());
         payment.setSelectedPackage(booking.getSelectedPackage());
         payment.setPackageValue(booking.getPackageRate());
         payment.setClientName(booking.getClientName());
@@ -57,7 +56,9 @@ public class BookingService {
         booking.setOrganizerName("PENDING");
         booking.setBookingSource("Online");
         booking.setPaymentStatus("Partially Paid");
-
+        booking.setModeOfPayment("Card");
+        booking.setDateCancelled(LocalDate.of(1970,1, 1 ));
+        booking.setDateCompleted(LocalDate.of(1970,1, 1 ));
         sendEmail(booking);
         return bookingRepository.save(booking);
     }

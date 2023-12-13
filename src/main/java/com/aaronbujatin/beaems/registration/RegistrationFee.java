@@ -18,5 +18,5 @@ public class RegistrationFee {
     private String fullName;
     private String expirationDate;
     private String cvv;
-    private double amountFee;
+
 }

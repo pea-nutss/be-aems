@@ -41,6 +41,10 @@ public class Booking {
     private String paymentStatus;
     private double packageRate;
     private double balance;
+    private double amountPaid;
+    private LocalDate dateCancelled;
+    private LocalDate dateCompleted;
+    private String modeOfPayment;
 
 
 
